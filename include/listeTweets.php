@@ -12,7 +12,7 @@
                     <p class="title">
                         “<?=$result['message']?>”
                     </p>
-                    <a href="detailProfil.php?user_id=<?=$result['author_id']?>">
+                    <a href="../detailProfil.php?user_id=<?=$result['author_id']?>">
                         <p class="subtitle"><?=$result['username']?></p>
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                             <a class="level-item">
                                 <span class="icon is-small"><i class="fas fa-retweet"></i></span>
                             </a>
-                            <a class="level-item" href="add_like.php?tweet_id=<?=$result['id']?>">
+                            <a class="level-item" href="../add_like.php?tweet_id=<?=$result['id']?>">
                                 <span class="icon is-small has-text-danger"><i class="fas fa-heart "></i></span>
                                 <span><?=$result['likes_quantity']?></span>
                             </a>
