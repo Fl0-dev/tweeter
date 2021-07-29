@@ -45,7 +45,7 @@
                             <span class="icon mr-1"><i class="fas fa-heart"></i></span>
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-success is-light" href="connexion.php">
+                        <a class="button is-success is-light" href="logIn.php">
                             <span class="icon mr-1"><i class="fas fa-user"></i></span>
                             Log in
                         </a>
