@@ -1,5 +1,7 @@
 <?php
+include 'include/session.php';
 include 'include/db.php';
+
 //initialisation du tableau d'erreurs
 $errors = [];
 //si passage forcé en get (par l'url)

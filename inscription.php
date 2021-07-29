@@ -1,4 +1,5 @@
 <?php
+include 'include/session.php';
 include 'include/db.php';
 //initialisation du tableau d'erreurs
 $errors = [];
@@ -64,10 +65,14 @@ if (!empty($_POST)) {
         $hash = password_hash($password, PASSWORD_DEFAULT, ['cost=>14']);//hash le password
         //envoie en BD
         insertUser($email,$pseudo,$hash,$biographie);
-        //todo : message flash
+        //message flash
+        $_SESSION['flash']=['Bienvenue '.$pseudo.' !','success'];
         //redirection
         header('Location:index.php');
         die();
+    }else{
+        //message flash
+        $_SESSION['flash']=['Vous avez des erreurs !','danger'];
     }
 
 }

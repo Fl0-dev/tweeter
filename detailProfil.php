@@ -1,4 +1,5 @@
 <?php
+include 'include/session.php';
 include 'include/db.php';
 
 //recupération du paramètre du get

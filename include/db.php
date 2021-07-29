@@ -8,9 +8,18 @@ function getUserById($id){
     //ou
     $pstmt->execute([':id'=>$id,]);
     return $pstmt->fetch();//récupération dans un ResultSet (tab associatif)
-
 }
-function selectTweetsById($author_id){
+function getUserByPseudo($pseudo)
+{
+    $sql = 'SELECT * FROM users WHERE pseudo=:pseudo;';//requête SQL avec paramètre nommé (:id) au lieu de ?
+    $cnx = connect(); //ouverture de la connexion
+    $pstmt = $cnx->prepare($sql); //envoi de la requête
+    //$pstmt->bindValue(':id',$id);//execution
+    //ou
+    $pstmt->execute([':pseudo' => $pseudo,]);
+    return $pstmt->fetch();//récupération dans un ResultSet (tab associatif)
+}
+    function selectTweetsById($author_id){
     $sql = 'SELECT tweets.*,users.pseudo as username FROM tweets JOIN users ON tweets.author_id=users.id WHERE author_id=:author_id;';//requête SQL avec paramètre nommé (:id) au lieu de ?
     $cnx =connect(); //ouverture de la connexion
     $pstmt = $cnx->prepare($sql); //envoi de la requête

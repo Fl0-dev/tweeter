@@ -2,6 +2,7 @@
     <div class="container">
 
         &copy;&nbsp;<?=date('Y')?>
+        <p>page vue &nbsp;<?= $_SESSION['indexViews']?>&nbsp;fois</p>
     </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
