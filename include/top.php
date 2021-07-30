@@ -40,15 +40,28 @@
             </div>
 
             <div class="navbar-end">
-
+                <?php
+                if(empty($_SESSION['user'])) : ?>
                         <a class="navbar-item button is-info is-light" href="inscription.php">
-                            <span class="icon mr-1"><i class="fas fa-heart"></i></span>
-                            <strong>Sign up</strong>
+                            <span class="icon mr-1"><i class="fas fa-book"></i></span>
+                            <strong>Inscription</strong>
                         </a>
+                <?php endif;?>
+                <?php
+                if(empty($_SESSION['user'])) : ?>
                         <a class="button is-success is-light" href="logIn.php">
                             <span class="icon mr-1"><i class="fas fa-user"></i></span>
-                            Log in
+                            <strong>Connexion</strong>
                         </a>
+                <?php endif;?>
+                <?php
+                if(!empty($_SESSION['user'])) : ?>
+
+                <a class="button is-danger is-light" href="logOut.php">
+                    <span class="icon mr-1"><i class="fas fa-times-circle"></i></i></span>
+                    <strong>Déconnexion</strong>
+                </a>
+                <?php endif;?>
             </div>
         </div>
     </nav>

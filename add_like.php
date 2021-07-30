@@ -23,3 +23,4 @@ addLike($tweet_id);
 //redirige vers la page d'où l'on vient !!espace!!
 header("Location: " . $_SERVER['HTTP_REFERER']);
 die();
+?>

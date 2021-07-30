@@ -67,6 +67,7 @@ if (!empty($_POST)) {
         insertUser($email,$pseudo,$hash,$biographie);
         //message flash
         $_SESSION['flash']=['Bienvenue '.$pseudo.' !','success'];
+        $_SESSION['user'] = getUserByPseudo($pseudo);
         //redirection
         header('Location:index.php');
         die();

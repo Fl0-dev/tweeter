@@ -1,38 +1,41 @@
 <?php
+
 include 'include/session.php';
 include 'include/db.php';
 //initialisation du tableau d'erreurs
 $errors = [];
+//si pas connecter, redirection vers l'inscription
 
-if (!empty($_POST)) {
-    $pseudo = strip_tags($_POST['username']);
-    $password = $_POST['password'];
-    //si pas de pseudo
-    if (empty($pseudo)) {
-        $errors['username'] = 'Veuillez saisir un pseudo SVP !';
-    }
-    //si pas de password
-    if (empty($password)) {
-        $errors['password'] = 'Veuillez saisir un password SVP !';
-    }
-    $resultPseudo = getUserByPseudo($pseudo);
-    if (empty($resultPseudo)) {
-        $errors['username'] = "Ce pseudo n'est pas enregistré, veuillez en soumettre un autre, SVP !";
-    } else {
-        if (!password_verify($password, $resultPseudo['password'])) {
-            $errors['password'] = 'Le password est incorrect !';
+    if (!empty($_POST)) {
+        $pseudo = strip_tags($_POST['username']);
+        $password = $_POST['password'];
+        //si pas de pseudo
+        if (empty($pseudo)) {
+            $errors['username'] = 'Veuillez saisir un pseudo SVP !';
+        }
+        //si pas de password
+        if (empty($password)) {
+            $errors['password'] = 'Veuillez saisir un password SVP !';
+        }
+        $resultPseudo = getUserByPseudo($pseudo);
+        if (empty($resultPseudo)) {
+            $errors['username'] = "Ce pseudo n'est pas enregistré, veuillez en soumettre un autre, SVP !";
+        } else {
+            if (!password_verify($password, $resultPseudo['password'])) {
+                $errors['password'] = 'Le password est incorrect !';
+            }
+        }
+        if (empty($errors)) {
+            //mettre en session
+            $_SESSION['user'] = $resultPseudo;
+            $_SESSION['flash'] = ['Bienvenue ' . $pseudo . ' !', 'success'];
+            //redirection
+            header('Location:index.php');
+            die();
+
         }
     }
-    if (empty($errors)) {
-        //mettre en session
-        $_SESSION['user']= $resultPseudo;
-        $_SESSION['flash'] = ['Bienvenue ' . $pseudo . ' !', 'success'];
-        //redirection
-        header('Location:index.php');
-        die();
 
-    }
-}
 include 'include/top.php';
 ?>
 <main>
