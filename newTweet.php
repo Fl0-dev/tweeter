@@ -29,7 +29,7 @@ if(empty ($_SESSION['user'])){
         }
         if (empty($errors)) {
             //todo : envoie en BD
-            insertTweet($tweet);
+            insertTweet($tweet,$_SESSION['user']['id']);
 ///////////////////////////////////////////////test//////////////////////
             /* $results =selectAllTweets();
              var_dump($results);

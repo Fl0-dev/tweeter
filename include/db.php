@@ -45,11 +45,11 @@ function selectAllTweets(){
     return $pstmt->fetchAll(); //récupération dans un ResultSet (tab associatif dans un tab indicé numérique)
 
 }
-function insertTweet(string $tweet){
-    $sql ="INSERT INTO tweets (id,author_id,message,likes_quantity,date_created) VALUE (null,1,:tweet,0,now());";
+function insertTweet(string $tweet,$author_id){
+    $sql ="INSERT INTO tweets (id,author_id,message,likes_quantity,date_created) VALUE (null,:author_id,:tweet,0,now());";
     $cnx =connect(); //ouverture de la connexion
     $pstmt = $cnx->prepare($sql); //envoi de la requête
-    $pstmt->execute([':tweet'=>$tweet,]);//execution
+    $pstmt->execute([':tweet'=>$tweet,':author_id'=>$author_id,]);//execution
 }
 function insertUser($email,$pseudo,$password,$biographie){
     $sql ="INSERT INTO users (id,email,pseudo,password,biographie,date_created) VALUE (null,:email,:pseudo,:password,:biographie,now());";

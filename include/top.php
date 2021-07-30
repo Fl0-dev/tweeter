@@ -59,7 +59,7 @@
 
                 <a class="button is-danger is-light" href="logOut.php">
                     <span class="icon mr-1"><i class="fas fa-times-circle"></i></i></span>
-                    <strong>Déconnexion</strong>
+                    <strong>Déconnexion (<?=$_SESSION['user']['pseudo']?>)</strong>
                 </a>
                 <?php endif;?>
             </div>
